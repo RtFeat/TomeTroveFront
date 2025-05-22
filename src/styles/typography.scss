@@ -1,0 +1,219 @@
+.intro__title {
+  font-size: var(--main-title);
+  font-weight: bold;
+  line-height: 114%;
+  font-family: 'Sora-Regular', sans-serif;
+}
+
+.header__link {
+  font-size: var(--links);
+}
+
+.intro__status {
+  font-size: 2.5rem;
+  font-weight: normal;
+  line-height: 114%;
+}
+
+.intro__slogan {
+  font-size: 2rem;
+  font-weight: normal;
+  line-height: 175%;
+}
+
+.intro__subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 175%;
+  color: var(--color-accent-10);
+}
+
+@media (max-width: 700px) {
+  .intro__title {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro__title {
+    font-size: 4rem;
+  }
+
+  .intro__status {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .intro__slogan {
+    font-size: 1.2rem;
+  }
+
+  .intro__subtitle {
+    font-size: 1.2rem;
+  }
+
+  .intro__slogan {
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 140%;
+  }
+
+  .intro__subtitle {
+    line-height: 140%;
+  }
+}
+
+/*ABOUT*/
+
+.about__title {
+  text-align: end;
+}
+
+.about__text-title {
+  line-height: 134%;
+  font-size: 2rem;
+}
+
+.about__text-center {
+  line-height: 156%;
+  font-size: 1.2rem;
+}
+
+.about__text-last {
+  line-height: 156%;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .about__title {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .about__text-title {
+    font-size: 1.5rem;
+  }
+
+
+}
+
+/*Advantages*/
+
+.advantages__title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 950px) {
+  .percentage__txt {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .quantity__txt {
+    font-size: 23px;
+    text-align: center;
+  }
+
+  .label__txt {
+    text-align: center;
+    font-size: 16px;
+    text-transform: lowercase;
+  }
+
+  .advantages__title {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 33px;
+  }
+}
+
+/*BENEFITS*/
+.block-plus__title {
+  color: var(--color-accent-10);
+  font-weight: 600;
+}
+
+.block-plus__description {
+  font-weight: 400;
+}
+
+
+.benefits-block__title {
+  text-align: center;
+}
+
+/*CONTACT_FORM*/
+
+.contact-title {
+  text-align: center;
+}
+
+.contacts-form__title {
+  color: var(--color-secondary-5);
+}
+
+.contacts-inf__title {
+  font-size: 1.5rem;
+}
+
+.contacts-inf__p {
+  font-size: 1.3rem;
+}
+
+.contact-block__main {
+  text-align: center;
+}
+
+/*FOOTER*/
+.footer-copy {
+  text-align: center;
+  line-height: 143%;
+  color: var(--color-secondary-20);
+}
+
+
+/*Modal-window*/
+
+.form-register__title {
+  padding-block-start: 2.5rem;
+  color: var(--color-secondary-30);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.form-register__inp {
+  color: var(--color-secondary-35);
+}
+
+@media (max-width: 510px) {
+  .form-register__title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 752px) {
+  .benefits-block__title {
+    font-size: 2rem;
+  }
+
+  .block-plus__title {
+    font-size: 1rem;
+  }
+
+  .block-plus__description {
+    font-size: 1rem;
+  }
+}
+
+//ANTHOLOGY
+
+//books__main__title
+.books__tittle-txt {
+  font-size: 3rem;
+}
+
+.books__tittle-amount {
+
+}

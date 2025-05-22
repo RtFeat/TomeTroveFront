@@ -16,8 +16,6 @@ import {MatButton, MatButtonModule} from '@angular/material/button';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  xPos: 'before' | 'after' = 'before'; // или 'after'
-  yPos: 'above' | 'below' = 'below';
   constructor(
     protected authService: AuthService,
   ) {}

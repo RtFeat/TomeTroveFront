@@ -1,0 +1,48 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 370px;
+  scroll-behavior: smooth;
+  background: var(--color-secondary-5);
+  color: var(--color-primary-5);
+}
+
+body {
+  font-family: 'Sora-Regular', sans-serif;
+  font-weight: bold;
+  font-size: var(--font-size-standart);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+button {
+  transition: 0.4s;
+}
+
+button:hover {
+  transform: translateX(5px);
+  color: var(--color-primary-5)!important;
+}
+
+section {
+  scroll-margin-top: 60px;
+}
