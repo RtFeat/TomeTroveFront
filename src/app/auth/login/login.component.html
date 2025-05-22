@@ -1,0 +1,39 @@
+<div id="myModal" class="modal">
+  <div class="modal-content login-window">
+    <img (click)="closeLogin()" class="close" src="images/vector/close.svg" alt="close">
+    <form class="form-register" *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
+      <h2 class="form-register__title">Войти</h2>
+
+      <div class="form-register"
+           [ngClass]="{invalid: form && form.get('login')?.touched && form.get('login')?.invalid}">
+        <input class="form-register__inp" type="text" name="login" placeholder="Логин" id="e-mail-login"
+               formControlName="login"
+               required>
+        <div *ngIf="form && form.get('login')?.touched && form.get('login')?.invalid">
+          <small *ngIf="form && form.get('login')?.errors?.['required']">Введите поле логин</small>
+        </div>
+      </div>
+
+      <div class="form-register"
+           [ngClass]="{invalid: form && form.get('password')?.touched && form.get('password')?.invalid}">
+        <input class="form-register__inp" type="password" name="password" placeholder="Пароль" id="password-login"
+               formControlName="password"
+               required>
+        <div *ngIf="form && form.get('password')?.touched && form.get('password')?.invalid">
+          <small *ngIf="form && form.get('password')?.errors?.['required']">Введите поле пароль</small>
+          <small *ngIf="form && form.get('password')?.errors?.['minlength']">Пароль должен быть не менее 6
+            символов</small>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+      <button [disabled]="form?.invalid || submitted" type="submit"
+              class="form-register__btn"> {{ submitted ? 'Загрузка...' : 'Войти' }}
+      </button>
+      <button type="submit" class="form-create-auth__btn" (click)="closeLogin(); authModal.openRegister()">
+        Создать аккаунт
+      </button>
+      <a class="form-register__link" href="">Забыли пароль?</a>
+    </form>
+  </div>
+</div>

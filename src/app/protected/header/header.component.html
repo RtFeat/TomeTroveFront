@@ -1,0 +1,41 @@
+<header class="header">
+  <div class="header__desktop">
+    <nav class="header__nav">
+      <div class="header__nav-first">
+        <a class="header__logo" href="#"><img src="images/logo_header_b.jpeg" alt="Логотип TomeTrove"></a>
+        <a class="header__link" href="#">О нас</a>
+        <a class="header__link" href="#">Почему мы</a>
+        <a class="header__link" [routerLink]="['/protected','anthology']" href="#">Подборки книг</a>
+      </div>
+      <div class="header__nav-last">
+        <button mat-button [matMenuTriggerFor]="menu" [xPosition]="xPos" [yPosition]="yPos"><img src="images/vector/profile.svg" alt="profile"></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+          <button mat-menu-item>Item 3</button>
+        </mat-menu>
+        <button (click)="authService.logout()">Выйти</button>
+      </div>
+    </nav>
+  </div>
+  <div class="header__mobile">
+    <nav class="header__nav">
+      <div class="menu">
+        <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+        <label for="burger-checkbox" class="burger"></label>
+        <ul class="menu-list">
+          <li><a href="#" class="menu-item">Главная</a>
+          <li>
+          <li><a href="#" class="menu-item">О нас</a>
+          <li>
+          <li><a href="#" class="menu-item">Команда</a>
+          <li>
+          <li><a href="#" class="menu-item">Контакты</a>
+          <li>
+        </ul>
+      </div>
+      <a class="header__logo" href="#"><img src="images/logo_header_b.jpeg" alt="Логотип TomeTrove"></a>
+      <a class="" href="#"><img src="images/vector/profile.svg" alt="Профиль"></a>
+    </nav>
+  </div>
+</header>
