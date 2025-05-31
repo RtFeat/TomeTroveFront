@@ -1,5 +1,5 @@
 //BASE
-.wrapper{
+.wrapper {
   padding: 0;
 }
 
@@ -43,7 +43,12 @@
 .books__main-anthology-cards {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 10px;
+  column-gap: 1rem;
+  gap: 1rem;
+}
+
+.card-name {
+  text-align: center;
 }
 
 .books-anthology-card {
@@ -62,6 +67,7 @@
 
 .filter-search__inp {
   background: var(--color-primary-5);
+  color: var(--dark-line-banana);
   padding: 1rem;
 }
 
@@ -73,6 +79,7 @@
 
 .filter-price-range_inp {
   background: var(--color-primary-5);
+  color: var(--dark-line-banana);
   padding: 1rem;
   width: 100%;
 }
@@ -116,8 +123,13 @@
   transition: 1s background-color;
 }
 
+.books-anthology-card__image {
+  width: 100%;
+  height: 300px;
+}
+
 .books-anthology-card__img:hover::after {
-  content: '1';
+  content: 'Купить подборку';
   align-items: center;
   text-align: center;
   padding-top: 100px;

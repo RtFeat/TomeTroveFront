@@ -1,1 +1,33 @@
+.profile_default {
+  width: 40px;
+  height: 40px;
+}
 
+.name_user {
+
+}
+
+.profile_btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: var(--links);
+  color: var(--color-primary-5);
+}
+
+.header__link:hover {
+  transition: 0.3s;
+}
+
+.header__link:hover {
+  color: var(--color-accent-10);
+}
+
+.blue {
+  color: var(--color-accent-10);
+  transition: 0.3s;
+}
+
+.blue:hover {
+  color: var(--color-primary-5);
+}

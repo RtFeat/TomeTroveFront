@@ -1,0 +1,136 @@
+<app-header></app-header>
+<div class="wrapper">
+  <main class="main">
+    <section class="order__main kyc__main-block">
+      <div class="kyc-menu-list-ct">
+        <ul class="kyc-menu-list">
+          <li class="kyc_menu_item disable">Мой</li>
+          <a [routerLink]="['/protected', 'account', 'profile']" class="kyc_menu_item">Аккаунт и безопасность</a>
+          <a [routerLink]="['/protected', 'account', 'order-list']" class="kyc_menu_item activate">История покупок</a>
+          <a *ngIf="authService.isAdmin()" [routerLink]="['/admin', 'panel']" class="kyc_menu_item">Панель администратора</a>
+          <a (click)="authService.logout()" class="kyc_menu_item">Выход</a>
+        </ul>
+      </div>
+      <div class="order-block">
+        <div class="order-title" data-v-1ac41610="">История покупок</div>
+        <div class="going-orders">
+<!--          <div class="going-orders-status"><div><span class="going-orders-status__title">История покупок</span>-->
+<!--              <div class="going-orders-form__main">-->
+<!--                <div class="going-orders-form-block">-->
+<!--                  <div class="going-orders-form__title__main">-->
+<!--                    <input class="going-orders-form__input" readonly="" type="text" size="1" autocomplete="off"-->
+<!--                           value="Все">-->
+<!--                    <div class="bx-w8"></div>-->
+<!--                    <i class="orders-form-icon" style="height:16px;">-->
+<!--                      <i class="orders-icon"-->
+<!--                         style="width:16px;height:16px;&#45;&#45;svg:url(https://static-app.bb-os.com/fe-common/svgAssets/ic-arrow-down-solid.svg);"-->
+<!--                         data-v-d2cf8c7f=""></i>-->
+<!--                    </i>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div></div>-->
+          <div style="width:100%;" class="trade-order-table">
+            <table class="fiat-table">
+              <colgroup class="colgroup">
+                <col style="width: 170px;">
+                <col style="width: 150px;">
+                <col style="width: 150px;">
+                <col style="width: 150px;">
+                <col style="width: 110px;">
+                <col style="width: 160px;">
+                <col style="width: 310px;">
+              </colgroup>
+              <thead>
+              <tr class="table-header"><!----><!--[-->
+                <th class="table-header-value">Дата</th>
+                <th class="table-header-value">Сумма</th>
+                <th class="table-header-value">Подборка</th>
+                <th class="table-header-value">Книги</th>
+                <th class="table-header-value">Статус</th><!--]--></tr>
+              </thead>
+              <ng-container *ngIf="transactions$ | async as transactions; else noTransactions">
+              <tbody *ngIf="transactions.length > 0; else noTransactions">
+                <tr class="row-item" *ngFor="let transaction of transactions">
+                  <td class="table-cell">
+                    <div class="table-header-value">
+                      <span class="table-cell-date">{{ transaction.created_at | date:'medium' }}</span>
+                    </div>
+                  </td>
+                  <td class="table-cell">
+                    <div class="table-header-value">
+                      <span>{{ transaction.amount }}</span>
+                    </div>
+                  </td>
+                  <td class="table-cell">
+                    <div class="table-header-value">
+                      {{ transaction.anthology.title }}
+                      <i class="bx-svg-warpper relative cursor-pointer chat-icon unread" style="height: 20px;"></i>
+                    </div>
+                  </td>
+                  <td class="table-cell">
+                    <div class="table-header-value">
+                      {{ transaction.anthology.description }}
+                      <i class="bx-svg-warpper relative cursor-pointer chat-icon unread" style="height: 20px;"></i>
+                    </div>
+                  </td>
+                  <td class="relative table-cell text-right">
+                    <div class="flex column-direction gap16 align-end">
+                      <div class="table-header-value">
+                        {{ transaction.status }}
+                        <i class="bx-svg-warpper cursor-pointer copy-icon" style="height: 16px;">
+                          <i class="bx-svg-inner"
+                             style="width: 16px; height: 16px; --svg: url(https://static-app.bb-os.com/fe-common/svgAssets/ic-copy.svg);"></i></i>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              </ng-container>
+
+              <ng-template #noTransactions>
+                <tbody>
+                <tr>
+                  <td colspan="7" class="empty-table-cell">
+                    <div class="empty-wrapper">
+                      <div class="icon-empty">
+                        <img src="https://static-app.bb-os.com/fe-common/assets/components/empty/dark/data.svg">
+                      </div>
+                      <p class="empty-text">Нет доступных данных</p></div>
+                  </td>
+                </tr>
+                </tbody>
+              </ng-template>
+            </table>
+            <div class="justify-between table-footer" style="" data-v-9eb18370=""><!--[--><span
+              data-v-9eb18370=""></span><!--]--><!----></div>
+          </div>
+        </div>
+        <div data-v-7486c552="" class="indicator" style="background: rgba(var(--dark-bg-pig-rgb), 0.9); display: none;">
+          <div data-v-427afe83="" data-v-7486c552="" class="loading-svg">
+            <svg data-v-427afe83="" version="1.1" width="36px" height="36px" viewBox="0 0 30 30"
+                 xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill="currentColor"><rect x="5" y="10" width="4" height="10" opacity="0.2" data-v-427afe83=""><animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" data-v-427afe83=""></animate><animate
+              attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s"
+              repeatCount="indefinite" data-v-427afe83=""></animate><animate attributeName="y" attributeType="XML"
+                                                                             values="10; 5; 10" begin="0s" dur="0.6s"
+                                                                             repeatCount="indefinite"
+                                                                             data-v-427afe83=""></animate></rect>
+              <rect
+                x="13" y="10" width="4" height="10" opacity="0.2" data-v-427afe83=""><animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" data-v-427afe83=""></animate>
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s"
+                         repeatCount="indefinite" data-v-427afe83=""></animate>
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s"
+                         repeatCount="indefinite" data-v-427afe83=""></animate></rect>
+              <rect x="21" y="10" width="4"
+                    height="10" opacity="0.2"
+                    data-v-427afe83=""><animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" data-v-427afe83=""></animate>
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s"
+                         repeatCount="indefinite" data-v-427afe83=""></animate>
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s"
+                         repeatCount="indefinite" data-v-427afe83=""></animate></rect></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

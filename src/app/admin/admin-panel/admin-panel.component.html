@@ -1,0 +1,168 @@
+<app-header></app-header>
+<div class="wrapper">
+  <main class="main">
+    <section class="kyc__main">
+      <div class="kyc__main-block">
+        <div class="kyc-menu-list-ct">
+          <ul class="kyc-menu-list">
+            <li class="kyc_menu_item disable">Мой</li>
+            <a [routerLink]="['/protected', 'account', 'profile']" class="kyc_menu_item">Аккаунт и безопасность</a>
+            <a [routerLink]="['/protected', 'account', 'order-list']" class="kyc_menu_item">История покупок</a>
+            <a *ngIf="authService.isAdmin()" class="kyc_menu_item activate">Панель администратора</a>
+            <a (click)="authService.logout()" class="kyc_menu_item">Выход</a>
+          </ul>
+        </div>
+        <div class="kyc-article">
+          <div class="kyc-article-inner">
+            <div class="kyc-article-header">
+              Панель Администратора
+            </div>
+            <div class="kyc-article-panel">
+              <ul class="kyc-list">
+                <form (ngSubmit)="onSubmit()" #anthologyForm="ngForm">
+                <li>Добавить новую подборку книг</li>
+                  <li>
+                    <p class="kyc-name">Название</p>
+                    <div class="kyc-setting">
+                      <input type="text" placeholder="Название" id="title" [(ngModel)]="anthology.title" name="title" required>
+                    </div>
+                  </li>
+                  <li>
+                    <p class="kyc-name">Изображение</p>
+                    <p class="kyc-setting"><input placeholder="Изображение" type="file" id="image" (change)="onFileSelected($event)" name="image">
+                    </p>
+                  </li>
+                  <li>
+                    <p class="kyc-name">Тема</p>
+                    <p class="kyc-setting"><input placeholder="Тема" type="text" id="topic" [(ngModel)]="anthology.topic" name="topic" required></p>
+                  </li>
+                  <li>
+                    <p class="kyc-name">Описание</p>
+                    <p class="kyc-setting"><input placeholder="Описание" id="description" [(ngModel)]="anthology.description" name="description" required></p>
+                  </li>
+                  <li>
+                    <p class="kyc-name">Цена</p>
+                    <p class="kyc-setting"><input placeholder="Цена" type="number" id="price" [(ngModel)]="anthology.price" name="price" required></p>
+                  </li>
+                  <li>
+                    <p class="kyc-name">Добавить новую подборку</p>
+                    <p class="kyc-setting"><button type="submit" [disabled]="!anthologyForm.valid">Создать</button>
+                    </p>
+                  </li>
+                </form>
+              </ul>
+              <div style="width:100%;" class="trade-order-table">
+                <div class="kyc-article-header-two">Вопросы пользователей</div>
+              <table class="fiat-table">
+                <colgroup class="colgroup">
+                  <col style="width: 170px;">
+                  <col style="width: 150px;">
+                  <col style="width: 150px;">
+                  <col style="width: 150px;">
+                  <col style="width: 110px;">
+                  <col style="width: 160px;">
+                  <col style="width: 310px;">
+                </colgroup>
+                <thead>
+                <tr class="table-header"><!----><!--[-->
+                  <th class="table-header-value">Дата</th>
+                  <th class="table-header-value">Имя</th>
+                  <th class="table-header-value">Телефон</th>
+                  <th class="table-header-value">Email</th>
+                  <th class="table-header-value">Вопрос</th><!--]--></tr>
+                </thead>
+                  <tbody *ngIf="questions.length > 0; else noTransactions">
+                  <tr class="row-item" *ngFor="let question of questions">
+                    <td class="table-cell">
+                      <div class="table-header-value">
+                        <span class="table-cell-date">{{ question.created_at | date:'medium' }}</span>
+                      </div>
+                    </td>
+                    <td class="table-cell">
+                      <div class="table-header-value">
+                        <span>{{ question.name }}</span>
+                      </div>
+                    </td>
+                    <td class="table-cell">
+                      <div class="table-header-value">
+                        {{ question.phone }}
+                        <i class="bx-svg-warpper relative cursor-pointer chat-icon unread" style="height: 20px;"></i>
+                      </div>
+                    </td>
+                    <td class="table-cell">
+                      <div class="table-header-value">
+                        {{ question.email }}
+                        <i class="bx-svg-warpper relative cursor-pointer chat-icon unread" style="height: 20px;"></i>
+                      </div>
+                    </td>
+                    <td class="relative table-cell text-right">
+                      <div class="flex column-direction gap16 align-end">
+                        <div class="table-header-value">
+                          {{ question.question }}
+                          <i class="bx-svg-warpper cursor-pointer copy-icon" style="height: 16px;">
+                            <i class="bx-svg-inner"
+                               style="width: 16px; height: 16px; --svg: url(https://static-app.bb-os.com/fe-common/svgAssets/ic-copy.svg);"></i></i>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                <ng-template #noTransactions>
+                  <tbody>
+                  <tr>
+                    <td colspan="7" class="empty-table-cell">
+                      <div class="empty-wrapper">
+                        <div class="icon-empty">
+                          <img src="https://static-app.bb-os.com/fe-common/assets/components/empty/dark/data.svg">
+                        </div>
+                        <p class="empty-text">Нет доступных данных</p></div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </ng-template>
+              </table>
+              <div class="justify-between table-footer" style="" data-v-9eb18370=""><!--[--><span
+                data-v-9eb18370=""></span><!--]--><!----></div>
+            </div>
+              <div class="kyc-article-header-two">Покупки пользователей</div>
+              <a href="https://yookassa.ru/my/payments">Ссылка на заказы пользователей</a>
+<!--              <ul class="kyc-list">-->
+<!--                <li>Центр безопасности</li>-->
+<!--                <li>-->
+<!--                  <span class="kyc-name">-->
+<!--                    <span>Email</span>-->
+<!--                    <span class="kyc-name-second">Для входа в учётную запись</span>-->
+<!--                  </span>-->
+<!--                  <span class="kyc-value">-->
+<!--                    ma***p&#64;gmail.com-->
+<!--                  </span>-->
+<!--                  <span class="kyc-setting">Изменить</span>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <span class="kyc-name">-->
+<!--                    <span>Пароль</span>-->
+<!--                    <span class="kyc-name-second">Для входа в учётную запись</span>-->
+<!--                  </span>-->
+<!--                  <span class="kyc-value">-->
+<!--                    ******-->
+<!--                  </span>-->
+<!--                  <span class="kyc-setting">Изменить</span>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--              <ul class="kyc-list">-->
+<!--                <li>Центр безопасности</li>-->
+<!--                <li>-->
+<!--                  <span class="kyc-name">-->
+<!--                    <span>Активность учетной записи</span>-->
+<!--                    <span class="kyc-name-second">Последний вход: 2025-05-22 16:23:04</span>-->
+<!--                  </span>-->
+<!--                  <span class="kyc-setting">Посмотреть</span>-->
+<!--                </li>-->
+<!--              </ul>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

@@ -2,19 +2,26 @@
   <div class="header__desktop">
     <nav class="header__nav">
       <div class="header__nav-first">
-        <a class="header__logo" href="#"><img src="images/logo_header_b.jpeg" alt="Логотип TomeTrove"></a>
-        <a class="header__link" href="#">О нас</a>
-        <a class="header__link" href="#">Почему мы</a>
-        <a class="header__link" [routerLink]="['/protected','anthology']" href="#">Подборки книг</a>
+        <a class="header__logo" [routerLink]="['/protected', 'home']"><img src="images/logo_header_b.jpeg" alt="Логотип TomeTrove"></a>
+        <a class="header__link" [routerLink]="['/protected', 'home']" fragment="benefits" href="#">Почему мы</a>
+        <a class="header__link" [routerLink]="['/protected', 'home']" fragment="how-buying">Как купить?</a>
+        <a class="header__link blue" [routerLink]="['/protected','anthology']" href="#">Подборки книг</a>
       </div>
-      <div class="header__nav-last">
-        <button mat-button [matMenuTriggerFor]="menu"><img src="images/vector/profile.svg" alt="profile"></button>
-        <mat-menu #menu="matMenu" [overlapTrigger]="false">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-          <button mat-menu-item>Item 3</button>
+      <div style="overflow: hidden" class="header__nav-last">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <div class="profile_btn" style="display: flex;">
+              <p class="name_user" *ngIf="user?.login">{{ user?.login }}</p>
+              <img class="profile_default" [src]="avatarPreview || defaultAvatarUrl"
+                   alt="profile_default">
+            </div>
+          </button>
+        <mat-menu style="overflow: hidden" #menu="matMenu">
+          <button [routerLink]="['/protected','account','profile']" mat-menu-item>Аккаунт и безопасноть</button>
+          <hr>
+          <button [routerLink]="['/protected','account','order-list']" mat-menu-item>История покупок</button>
+          <hr>
+          <button (click)="authService.logout()" mat-menu-item>Выйти</button>
         </mat-menu>
-        <button (click)="authService.logout()">Выйти</button>
       </div>
     </nav>
   </div>

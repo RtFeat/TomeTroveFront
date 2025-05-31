@@ -12,14 +12,14 @@
         <div class="books__main-anthology-filter">
           <div class="filter-search">
             <h2 class="filter-search__title">Поиск</h2>
-            <input class="filter-search__inp" placeholder="Введите тему" type="text" name="" id="">
+            <input class="filter-search__inp" placeholder="Введите тему" type="text" [(ngModel)]="searchStr">
           </div>
           <hr class="line-hr-filter">
           <div class="filter-price">
             <h3 class="filter-price__title">Цена</h3>
             <div class="filter-price-range">
-              <input class="filter-price-range_inp min" type="text" placeholder="0₽" name="" id="+">
-              <input class="filter-price-range_inp max" type="text" placeholder="2000₽" name="" id="-">
+              <input class="filter-price-range_inp min" type="number" placeholder="0 ₽" [(ngModel)]="minPrice"/>
+              <input class="filter-price-range_inp max" type="number" placeholder="2000 ₽" [(ngModel)]="maxPrice"/>
             </div>
           </div>
         </div>
@@ -32,36 +32,20 @@
               <div>3</div>
             </div>
           </div>
-          <div class="books__main-anthology-cards">
-            <div class="books-anthology-card">
-              <div class="books-anthology-card__img">
-                <img src="images/anthology_test_1.jpg" alt="">
+          <div *ngIf="anthologies.length; else loading">
+            <div class="books__main-anthology-cards">
+              <div (click)="openModal(anthology.id)" class="books-anthology-card" *ngFor="let anthology of anthologies | searchAnthologies:searchStr | searchPrice:minPrice:maxPrice; let idx = index">
+                <div class="books-anthology-card__img">
+                  <img *ngIf="anthology.image" [src]="anthology.image" alt="{{ anthology.topic }}">
+                </div>
+                <h3 class="card-name">{{ anthology.title }}</h3>
+                <span>{{ anthology.price }} ₽</span>
               </div>
-              <h3 class="card-name">Бизнес</h3>
-              <span>400 ₽</span>
-            </div>
-            <div class="books-anthology-card">
-              <div class="books-anthology-card__img">
-                <img src="images/anthology_test_2.jpg" alt="">
-              </div>
-              <h3 class="card-name">Программирование</h3>
-              <span>400 ₽</span>
-            </div>
-            <div class="books-anthology-card">
-              <div class="books-anthology-card__img">
-                <img src="images/anthology_test_3.jpg" alt="">
-              </div>
-              <h3 class="card-name">Коммуникация</h3>
-              <span>400 ₽</span>
-            </div>
-            <div class="books-anthology-card">
-              <div class="books-anthology-card__img">
-                <img src="images/anthology_test_1.jpg" alt="">
-              </div>
-              <h3 class="card-name">Коммуникация</h3>
-              <span>400 ₽</span>
             </div>
           </div>
+          <ng-template #loading>
+            <p>Загрузка...</p>
+          </ng-template>
         </div>
       </div>
     </section>

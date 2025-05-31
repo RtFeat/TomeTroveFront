@@ -158,6 +158,16 @@
 
 .benefits-block__main-img {
   max-width: 600px;
+  display: block;
+  width: 100%; /* или конкретная ширина, например, 529px */
+  height: auto;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  pointer-events: auto; /* Убедитесь, что события мыши не блокируются */
 }
 
 .benefits-block-plus {
@@ -279,8 +289,12 @@
   width: 75%;
 }
 
+.stages__main-block {
+  transition: 1s;
+}
+
 @media (max-width: 650px) {
-  .stages-block__main{
+  .stages-block__main {
     h2 {
       font-size: 2rem;
     }
@@ -364,6 +378,10 @@
   display: flex;
   gap: 1rem;
   width: 100%;
+  
+  input {
+    color: var(--color-secondary-5);
+  }
 }
 
 .form-contact__input {
@@ -563,4 +581,19 @@
   .contact-question__main {
     align-items: stretch;
   }
+}
+
+//Header
+
+.header-auth__button {
+  display: flex;
+  gap: 30px;
+}
+
+.header-reg {
+  padding: 8px 15px;
+  font-size: var(--links);
+  font-weight: 500;
+  border-radius: 50px;
+  background: var(--color-accent-15);
 }

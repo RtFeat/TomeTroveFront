@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <main class="main">
+    <section class="books__main-anthology">
+      <div class="books__main-anthology-block">
+        <div class="books__main-anthology-cards-block">
+          <div *ngIf="loading">
+            <div class="books__main-anthology-cards">
+              <div class="books-anthology-card">
+                <div class="books-anthology-card__img">
+                  <img class="books-anthology-card__image" *ngIf="data.image" [src]="data.image" alt="{{ data.topic }}">
+                </div>
+                <div class="books-anthology-card__txt" >
+                  <h3>Тема</h3>
+                  <span class="card-name">{{ data.title }}</span>
+                  <h3>Цена</h3>
+                  <span>{{ data.price }} ₽</span>
+                  <h3>Описание:</h3>
+                  <p>{{ data.topic }}</p>
+                  <h3>Примечание:</h3>
+                  <p>{{ data.title }}</p>
+                </div>
+                <button mat-button class="buy" (click)="buy()">Купить</button>
+              </div>
+            </div>
+          </div>
+          <ng-template #loading>
+            <p>Загрузка...</p>
+          </ng-template>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>

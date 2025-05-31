@@ -3,12 +3,14 @@
     <nav class="header__nav">
       <div class="header__nav-first">
         <a class="header__logo" href="#"><img src="images/logo_header_b.jpeg" alt="Логотип TomeTrove"></a>
-        <a class="header__link" href="#">О нас</a>
-        <a class="header__link" href="#">Почему мы</a>
-        <a class="header__link" href="#">Контакты</a>
+        <a class="header__link" href="intro#about">О нас</a>
+        <a class="header__link" href="intro#why">Почему мы</a>
+        <a class="header__link" href="intro#contact">Контакты</a>
       </div>
-      <div>
-        <button (click)="authModal.openLogin()">Личный кабинет</button>
+      <div class="header-auth__button">
+        <button class="header__link" (click)="authModal.openLogin()">Войти</button>
+        <button class="header-reg" (click)="authModal.openRegister()">Регистрация</button>
+<!--        <button><img src="images/vector/theme/theme_bright.svg" alt="theme_bright"></button>-->
       </div>
     </nav>
   </div>
@@ -20,12 +22,14 @@
         <ul class="menu-list">
           <li><a href="#" class="menu-item">Главная</a>
           <li>
-          <li><a href="#" class="menu-item">О нас</a>
+          <li><a href="intro#about" class="menu-item">О нас</a>
           <li>
-          <li><a href="#" class="menu-item">Команда</a>
+          <li><a href="intro#about" class="menu-item">Почему мы</a>
           <li>
-          <li><a href="#" class="menu-item">Контакты</a>
+          <li><a href="intro#contact" class="menu-item">Контакты</a>
           <li>
+          <li><button class="header__link" (click)="authModal.openLogin()">Войти</button></li>
+          <li><button class="header-reg" (click)="authModal.openRegister()">Регистрация</button></li>
         </ul>
       </div>
       <a class="header__logo" href="#"><img src="images/logo_header_b.jpeg" alt="Логотип TomeTrove"></a>
@@ -38,8 +42,7 @@
     <section class="intro">
       <div class="intro__main">
         <div class="intro__main__content">
-          <img class="bright__img" src="images/bright.png" alt="">
-          <div class="intro__content">
+          <div class="intro__content block-right" appSlideAnimation direction="right" delay="0.4">
             <div class="intro__main__title">
               <h1 class="intro__title">TomeTrove</h1>
               <h2 class="intro__status">Ваш статус: [неизвестно]</h2>
@@ -49,19 +52,21 @@
                 свою дисциплину и мотивацию?</p>
               <h2 class="intro__subtitle">ДОСТУП К ЭТИМ КНИГАМ ОГРАНИЧЕН</h2>
             </div>
-            <button class="intro__button">Расшифровать доступ</button>
+            <button class="intro__button" (click)="authModal.openLogin()">Расшифровать доступ</button>
 
           </div>
+          <img class="bright__img block-left" appSlideAnimation direction="left" delay="0.2" src="images/bright.png"
+               alt="">
           <img class="intro__image-logo" src="images/intro.png" alt="Коллекция редких книг TomeTrove">
           <button class="intro__button_mb">Узнать подробнее</button>
         </div>
       </div>
     </section>
-    <section class="about-block">
+    <section id="about" class="about-block">
       <div class="about-block__main">
-        <div class="about__title"><h2>ЗАКРЫТАЯ БИБЛИОТЕКА ДЛЯ ИЗБРАННЫХ С 2025</h2></div>
+        <div #about_leftBlock class="about__title"><h2>ЗАКРЫТАЯ БИБЛИОТЕКА ДЛЯ ИЗБРАННЫХ С 2025</h2></div>
         <div class="about__line"></div>
-        <div class="about__text">
+        <div #about_rightBlock class="about__text">
           <h2 class="about__text-title">TOMETROVE – Онлайн-платформа для формирования тематических подборок
             книг с 2025 года </h2>
           <div class="about__line about__line-mobile"></div>
@@ -78,23 +83,23 @@
     <section class="advantages-block">
       <h2 class="advantages__title">ДИВЕРСИФИКАЦИЯ ЗНАНИЙ — ВАШЕ НЕЗАКОННОЕ ПРЕИМУЩЕСТВО</h2>
       <div class="advantages-block__main">
-        <div class="advantages__private">
+        <div #square1 class="advantages__private square">
           <p class="private__percentage__txt">192,000 ЧАСОВ УТЕЧКИ ЗНАНИЙ</p>
           <h2 class="private__quantity__txt">98%</h2>
           <h3 class="private__label__txt">КНИГ ОТСУТСТВУЮТ В ОТКРЫТОМ ДОСТУПЕ</h3>
         </div>
         <div class="advantages-block__main-last">
-          <div class="advantages__uniqueness">
+          <div #square2 class="advantages__uniqueness square">
             <p class="percentage__txt">43%</p>
             <h2 class="quantity__txt">1,847</h2>
             <h3 class="label__txt">УНИКАЛЬНЫХ ПОДБОРОК</h3>
           </div>
-          <div class="advantages__level">
+          <div #square3 class="advantages__level square">
             <p class="percentage__txt">+2%</p>
             <h2 class="quantity__txt">7%</h2>
             <h3 class="label__txt">ПЕРЕШЛИ НА ADVANCED</h3>
           </div>
-          <div class="advantages__trust">
+          <div #square4 class="advantages__trust square">
             <p class="percentage__txt">+245%</p>
             <h2 class="quantity__txt">12 442</h2>
             <h3 class="label__txt">ДОВЕРЯЮТ НАМ</h3>
@@ -102,13 +107,13 @@
         </div>
       </div>
     </section>
-    <section class="benefits-block">
-      <h2 class="benefits-block__title">ПОЧЕМУ ЭТО РАБОТАЕТ (ДАЖЕ ЕСЛИ ВАМ ГОВОРЯТ ОБРАТНОЕ)</h2>
+    <section id="why" class="benefits-block">
+      <h2 appTypingAnimation class="benefits-block__title">ПОЧЕМУ ЭТО РАБОТАЕТ (ДАЖЕ ЕСЛИ ВАМ ГОВОРЯТ ОБРАТНОЕ)</h2>
       <div class="benefits-block__main">
         <div class="benefits-block__main__btn">
           <div class="benefits-block-plus">
             <div class="block-plus__main">
-              <div class="block-plus">
+              <div appBlockScaleAnimation class="block-plus">
                 <div class="block-plus-circle">
                   <img class="block-plus__img" src="images/vector/plus/experts.svg" alt="experts">
                 </div>
@@ -121,7 +126,7 @@
                   </div>
                 </div>
               </div>
-              <div class="block-plus">
+              <div appBlockScaleAnimation class="block-plus">
                 <div class="block-plus-circle">
                   <img class="block-plus__img" src="images/vector/plus/cool.svg" alt="cool">
                 </div>
@@ -131,7 +136,7 @@
                   <div class="d-n">Никакой воды, только проверенные методики.</div>
                 </div>
               </div>
-              <div class="block-plus">
+              <div appBlockScaleAnimation class="block-plus">
                 <div class="block-plus-circle">
                   <img class="block-plus__img" src="images/vector/plus/dollars.svg" alt="anonymous">
                 </div>
@@ -142,7 +147,7 @@
                   <div class="d-n">Эти знания — только для вас.</div>
                 </div>
               </div>
-              <div class="block-plus">
+              <div appBlockScaleAnimation class="block-plus">
                 <div class="block-plus-circle">
                   <img class="block-plus__img" src="images/vector/plus/support.svg" alt="support">
                 </div>
@@ -155,49 +160,91 @@
               </div>
             </div>
           </div>
-          <button class="benefits-block__btn">Всё это делает нас особенными</button>
+          <button class="benefits-block__btn" (click)="authModal.openLogin()">Всё это делает нас особенными</button>
         </div>
-        <img class="benefits-block__main-img" src="images/benefits.png" alt="benefits">
+        <div appSlideAnimation direction="right" class="benefits-block__main-img">
+          <img appPixelateOnHover [pixelSize]="10" [effectRadius]="100" src="images/benefits.png"
+               class="benefits-block__main-img" alt="Benefits">
+        </div>
       </div>
     </section>
     <section class="stages-block">
 
       <div class="stages-block__main">
-        <h2>ЭТИ ЗНАНИЯ УЖЕ ИЗМЕНИЛИ ЖИЗНЬ 847 ЧЕЛОВЕК</h2>
+        <h2 appTypingAnimation>ЭТИ ЗНАНИЯ УЖЕ ИЗМЕНИЛИ ЖИЗНЬ 847 ЧЕЛОВЕК</h2>
         <h3>ВАША ОЧЕРЕДЬ СДЕЛАТЬ РЫВОК</h3>
         <div class="stages__main">
           <div class="stages-row">
-            <div class="stages__main-block">1. Регистрация</div>
-            <div class="stages__main-block">2. Категории</div>
-            <div class="stages__main-block">3. Пройти тест</div>
+            <div appFallingBlocksAnimation class="stages__main-block">1. Регистрация</div>
+            <div appFallingBlocksAnimation class="stages__main-block">2. Категории</div>
+            <div appFallingBlocksAnimation class="stages__main-block">3. Пройти тест</div>
           </div>
           <div class="stages-row stages-row--centered">
-            <div class="stages__main-block stages__center-block">4. Выбор плана</div>
-            <div class="stages__main-block stages__center-block">5. Оплата</div>
+            <div appFallingBlocksAnimation class="stages__main-block stages__center-block">4. Выбор плана</div>
+            <div appFallingBlocksAnimation class="stages__main-block stages__center-block">5. Оплата</div>
           </div>
         </div>
-        <button class="stages__btn">ПОЛУЧИТЬ ДОСТУП</button>
+        <button class="stages__btn" (click)="authModal.openLogin()">ПОЛУЧИТЬ ДОСТУП</button>
       </div>
     </section>
     <section class="form-contact__sect">
       <div class="form-contact__main">
-        <h2 class="form-contact__main__title">ЗАПОЛНИТЕ ФОРМУ</h2>
+        <h2 appTypingAnimation class="form-contact__main__title">ЗАПОЛНИТЕ ФОРМУ</h2>
         <h3 class="form-contact__main__small">Чтобы узнать больше о возможностях и условиях.</h3>
-        <form class="form-contact__block">
+        <form class="form-contact__block" #form="ngForm" (ngSubmit)="btnSubmit()" novalidate>
           <div class="form-contact__inputs">
-            <input class="form-contact__input" placeholder="Имя" type="text" name="name" id="name">
-            <input class="form-contact__input" placeholder="Телефон" type="text" name="phone" id="phone">
-            <input class="form-contact__input" placeholder="Почта" type="email" name="email" id="email">
+            <input
+              appSlideAnimation
+              direction="left"
+              [duration]="3"
+              class="form-contact__input"
+              placeholder="Имя"
+              type="text"
+              name="name"
+              id="name"
+              [(ngModel)]="model.name"
+              required
+            />
+            <input
+              appSlideAnimation
+              direction="left"
+              [duration]="2"
+              class="form-contact__input"
+              placeholder="Телефон"
+              type="text"
+              name="phone"
+              id="phone"
+              [(ngModel)]="model.phone"
+              required
+            />
+            <input
+              appSlideAnimation
+              direction="left"
+              [duration]="1"
+              class="form-contact__input"
+              placeholder="Почта"
+              type="email"
+              name="email"
+              id="email"
+              [(ngModel)]="model.email"
+              required
+              email
+            />
           </div>
-          <button class="form-contact__btn">ВСТУПИТЬ В ЗАКРЫТЫЙ КЛУБ</button>
+          <button
+            class="form-contact__btn"
+            type="submit"
+          >
+            ВСТУПИТЬ В ЗАКРЫТЫЙ КЛУБ
+          </button>
         </form>
       </div>
     </section>
-    <section class="contact-block">
+    <section id="contact" class="contact-block">
       <div class="contact-block__main">
         <h2 class="contact-title">Связаться с нами</h2>
         <div class="contact-question__main">
-          <div class="contacts-inf">
+          <div appSlideAnimation direction="left" class="contacts-inf">
             <div class="contacts-inf__txt">
               <h3 class="contacts-inf__title">Если у вас возникли вопросы
                 или вы хотите обсудить возможности
@@ -205,39 +252,39 @@
               <p class="contacts-inf__p">Свяжитесь с нами с помощью формы
                 или по указанным контактным данным ниже.</p>
             </div>
-            <div class="contacts-inf-block">
-              <div class="contacts-inf-phone">
+            <div class="contacts-inf-block" >
+              <a href="tel:+7(999)555-77-44" class="contacts-inf-phone">
                 <div class="contacts-circle">
                   <img class="" src="images/vector/phone.svg" alt="phone">
                 </div>
                 <p>+1 585 213 5977</p>
-              </div>
-              <div class="contacts-inf-mail">
+              </a>
+              <a href="mailto: tometrove@mail.ru" class="contacts-inf-mail">
                 <div class="contacts-circle">
                   <img class="" src="images/vector/mail.svg" alt="mail">
                 </div>
-                <p>TomeTrove&#64;gmail.com</p>
-              </div>
-              <div class="contacts-inf-email-phone">
+                <p>TomeTrove&#64;mail.ru</p>
+              </a>
+              <a href="https://maps.app.goo.gl/dScZGPZN94UNZUoRA" class="contacts-inf-email-phone">
                 <div class="contacts-circle">
                   <img class="" src="images/vector/address.svg" alt="address">
                 </div>
                 <p>ul.Lenina 12/3</p>
-              </div>
+              </a>
             </div>
           </div>
           <div class="form-img__main">
-            <img class="triangle__img" src="images/triangle.png" alt="triangle">
-            <form action="" class="contacts-form">
+            <img class="triangle__img" appSpinnerRotationAnimation src="images/triangle.png" alt="triangle">
+            <form action="" class="contacts-form" (ngSubmit)="onSubmit()">
               <h2 class="contacts-form__title">Задать вопрос</h2>
               <input class="contacts-form-username" placeholder="Имя" type="text" name="username"
-                     id="username">
+                     id="username" [(ngModel)]="formData.name" required>
               <input class="contacts-form-telephone" placeholder="Телефон" type="text" name="telephone"
-                     id="telephone">
-              <input class="contacts-form-email" placeholder="Email" type="email" name="mail" id="mail">
+                     id="telephone" [(ngModel)]="formData.phone" required>
+              <input class="contacts-form-email" placeholder="Email" type="email" name="mail" id="mail" [(ngModel)]="formData.email" required>
               <input class="contacts-form-question" placeholder="Ваш вопрос" type="text" name="question"
-                     id="question">
-              <button class="contacts-form-contacts-form__btn">Отправить</button>
+                     id="question" [(ngModel)]="formData.question" required>
+              <button class="contacts-form-contacts-form__btn" type="submit">Отправить</button>
             </form>
           </div>
         </div>
@@ -246,14 +293,16 @@
     <footer class="footer">
       <a href="#"><img class="footer-logo" src="images/logo_footer.jpeg" alt="logo_footer"></a>
       <p class="footer-copy">Copyright © 2025<br>
-        TomeTrove</p>
+        TomeTrove<br>
+        <a href="policy">Privacy Policy</a>
+      </p>
       <div class="footer-social">
-        <div class="footer-social__img">
+        <a href="https://telegram.org" class="footer-social__img">
           <img class="footer-social__img-tg" src="images/vector/social/tg.svg" alt="tg">
-        </div>
-        <div class="footer-social__img">
+        </a>
+        <a href="https://vk.com" class="footer-social__img">
           <img class="footer-social__img-vk" src="images/vector/social/vk.svg" alt="vk">
-        </div>
+        </a>
       </div>
     </footer>
   </main>

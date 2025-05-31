@@ -1,14 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
 @use './styles/variables' as *;
 @use './styles/mixins' as *;
+@use '@angular/material' as mat;
 
-
-@import "./styles/variables";
+// Импорты кастомных стилей
 @import "./styles/normalize";
 @import "./styles/fonts";
 @import "./styles/globals";
 @import "./styles/base";
 @import "./styles/typography";
+
+// Подключение базовых стилей Material
+@include mat.core();
+
+// Define themes
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$blue-palette,
+    tertiary: mat.$violet-palette,
+  )
+));
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$blue-palette,
+    tertiary: mat.$violet-palette,
+  )
+));
+
+// Apply light theme within a selector
+.light-theme {
+  @include mat.all-component-themes($light-theme);
+  background: #f4f4f4 !important;
+  color: #000000;
+}
+
+.dark-theme {
+  @include mat.all-component-themes($dark-theme);
+  background: #121212 !important;
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
 import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../shared/service/auth.service';
 import {AuthModalService} from '../shared/service/auth-modal.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,7 @@ import {AuthModalService} from '../shared/service/auth-modal.service';
   standalone: true,
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent implements OnInit{
   form?: FormGroup;
   submitted = false;

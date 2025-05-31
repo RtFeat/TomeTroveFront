@@ -3,7 +3,7 @@
     <img (click)="closeRegister()" class="close" src="images/vector/close.svg" alt="close">
     <form class="form-register" *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
 
-      <h2 class="form-register__title">Зарегестрироваться</h2>
+      <h2 class="form-register__title">Регистрация</h2>
       <div class="form-register"
            [ngClass]="{invalid: form && form.get('login')?.touched && form.get('login')?.invalid}">
         <input class="form-register__inp" type="text" name="login" placeholder="Логин" id="login"

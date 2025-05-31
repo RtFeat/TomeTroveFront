@@ -1,0 +1,102 @@
+<app-header></app-header>
+<div class="wrapper">
+  <main class="main">
+
+    <section class="kyc__main">
+      <div class="kyc__main-block">
+        <div class="kyc-menu-list-ct">
+          <ul class="kyc-menu-list">
+            <li class="kyc_menu_item disable">Мой</li>
+            <a class="kyc_menu_item activate">Аккаунт и безопасность</a>
+            <a [routerLink]="['/protected', 'account', 'order-list']" class="kyc_menu_item">История покупок</a>
+            <a *ngIf="authService.isAdmin()" [routerLink]="['/admin', 'panel']" class="kyc_menu_item">Панель
+              администратора</a>
+            <a (click)="logout()" class="kyc_menu_item">Выход</a>
+          </ul>
+        </div>
+        <div class="kyc-article">
+          <div class="kyc-article-inner">
+            <div class="kyc-article-header">
+              Аккаунт и безопасность
+            </div>
+            <div class="kyc-article-panel">
+              <ul class="kyc-list">
+                <li>Информация учётной записи</li>
+                <li>
+                  <p class="kyc-name">Аватар</p>
+                  <div class="kyc-value">
+                    <img class="avatar-preview"
+                         [src]="avatarPreview || defaultAvatarUrl" alt="Avatar"/>
+                  </div>
+                  <p class="kyc-setting_1 kyc-setting">
+                    <input type="file" accept="image/*" (change)="onAvatarChange($event)"/>
+                    <button type="button" (click)="deleteAvatar()">Сбросить</button>
+                  </p>
+                </li>
+                <li>
+                  <p class="kyc-name">Псевдоним</p>
+                  <form class="form-name-change" [formGroup]="nameForm" (ngSubmit)="changeName()">
+                    <div class="kyc-value">
+                      <p>
+                        <span>
+                          <input class="inp-form" id="login" formControlName="login" type="text"/>
+                        </span>
+                      </p>
+                    </div>
+                    <button class="kyc-setting" type="submit" [disabled]="nameForm.invalid">Изменить</button>
+                  </form>
+                  <!--                  <p *ngIf="successMessage" class="success">{{ successMessage }}</p>-->
+                  <!--                  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>-->
+                </li>
+                <!--                <li>-->
+                <!--                  <p class="kyc-name">Пол</p>-->
+                <!--                  <div class="kyc-value">-->
+                <!--                    <p class="kyc-value"><span>Муж.</span></p>-->
+                <!--                  </div>-->
+                <!--                  <p class="kyc-setting">Изменить</p>-->
+                <!--                </li>-->
+              </ul>
+              <ul class="kyc-list">
+                <li>Центр безопасности</li>
+                <li>
+                  <span class="kyc-name">
+                    <span>Email</span>
+                    <span class="kyc-name-second">Для входа в учётную запись</span>
+                  </span>
+                  <form class="form-name-change" [formGroup]="emailForm" (ngSubmit)="changeEmail()">
+                    <span class="kyc-value">
+                      <input class="inp-form" id="email" formControlName="email" type="email"/>
+                    </span>
+                    <button class="kyc-setting" type="submit" [disabled]="emailForm.invalid">Изменить</button>
+                  </form>
+                </li>
+                <li>
+                  <span class="kyc-name">
+                    <span>Пароль</span>
+                    <span class="kyc-name-second">Для входа в учётную запись</span>
+                  </span>
+                  <form class="form-name-change" [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+                    <span class="kyc-value">
+                      <input class="inp-form" id="password" placeholder="******" formControlName="password" type="text"/>
+                    </span>
+                    <button class="kyc-setting" type="submit" [disabled]="passwordForm.invalid">Изменить</button>
+                  </form>
+                </li>
+              </ul>
+              <!--              <ul class="kyc-list">-->
+              <!--                <li>Центр безопасности</li>-->
+              <!--                <li>-->
+              <!--                  <span class="kyc-name">-->
+              <!--                    <span>Активность учетной записи</span>-->
+              <!--                    <span class="kyc-name-second">Последний вход: 2025-05-22 16:23:04</span>-->
+              <!--                  </span>-->
+              <!--                  <span class="kyc-setting">Посмотреть</span>-->
+              <!--                </li>-->
+              <!--              </ul>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
