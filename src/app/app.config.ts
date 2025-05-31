@@ -19,9 +19,9 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_CONFIG,
       useValue: {
-        apiUrl: 'https://tometrove.ru/api', // URL для API
-        staticUrl: 'https://tometrove.ru', // URL для API
-        mediaUrl: 'https://tometrove.ru/media/' // URL для медиафайлов
+        apiUrl: 'your', // URL для API
+        staticUrl: 'your', // URL для API
+        mediaUrl: 'your' // URL для медиафайлов
       } as AppConfig
     }
   ]
